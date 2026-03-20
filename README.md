@@ -1,59 +1,214 @@
-# TinyUrlApp
+Here’s a clean and professional **README.md** you can use for your Tiny URL project 👇
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.2.
+---
 
-## Development server
+# 🚀 Tiny URL App
 
-To start a local development server, run:
+A full-stack URL shortening application built using:
+
+* **Frontend:** Angular
+* **Backend:** ASP.NET Core Web API
+* **Database:** SQLite
+
+---
+
+# 📌 Features
+
+### 🔗 URL Shortening
+
+* Generate a short URL from a long URL
+* Automatically creates a **6-character short code**
+
+### 📋 URL Management
+
+* View list of all shortened URLs
+* Display:
+
+  * Short URL
+  * Original URL
+  * Click count
+
+### 🔍 Search & Filter
+
+* Search URLs by:
+
+  * Short code
+  * Original URL
+
+### 📊 Click Tracking
+
+* Tracks number of clicks on each short URL
+* Increments count on every redirect
+
+### 📋 Actions
+
+* Copy short URL to clipboard
+* Delete URL
+* Redirect to original URL when short link is accessed
+
+### 🔐 Private URL Support
+
+* Option to generate private URLs (not stored, but still usable)
+
+---
+
+# 🏗️ Project Structure
+
+```
+tiny-url-app/
+│
+├── frontend/        # Angular application
+├── backend/         # ASP.NET Core Web API
+├── .gitignore
+└── README.md
+```
+
+---
+
+# ⚙️ Prerequisites
+
+* Node.js (v16+)
+* Angular CLI
+* .NET SDK (6 or later)
+* SQLite
+
+---
+
+# ▶️ Getting Started
+
+## 1. Clone the repository
 
 ```bash
+git clone <your-repo-url>
+cd tiny-url-app
+```
+
+---
+
+## 2. Run Backend (ASP.NET Core API)
+
+```bash
+cd backend
+dotnet restore
+dotnet run
+```
+
+API will run at:
+
+```
+http://localhost:5235
+```
+
+Swagger:
+
+```
+http://localhost:5235/swagger
+```
+
+---
+
+## 3. Run Frontend (Angular)
+
+```bash
+cd frontend
+npm install
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Frontend will run at:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
+# 🔗 API Endpoints (Examples)
+
+| Method | Endpoint      | Description              |
+| ------ | ------------- | ------------------------ |
+| GET    | /api/url      | Get all URLs             |
+| POST   | /api/url      | Create short URL         |
+| GET    | /{shortCode}  | Redirect to original URL |
+| DELETE | /api/url/{id} | Delete URL               |
+
+---
+
+# ⚙️ Configuration
+
+## Angular Environment
+
+Update API URL in:
+
+```
+src/environments/environment.ts
 ```
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
+```ts
+export const environment = {
+  apiUrl: 'http://localhost:5235/api'
+};
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+## Backend Configuration
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Update connection string in:
 
-```bash
-ng test
+```
+appsettings.json
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
+```json
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Data Source=tinyurl.db"
+  }
+}
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
+# 🧪 Features Implementation Notes
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+* Uses **Angular Material** for UI components
+* Uses **Reactive/Template-driven forms**
+* Uses **RxJS Observables** for API calls
+* Uses **Entity Framework Core** with SQLite
+* Implements **CORS** for frontend-backend communication
+
+---
+
+# 📦 Build for Production
+
+## Angular
+
+```bash
+ng build --configuration production
+```
+
+## .NET
+
+```bash
+dotnet publish -c Release
+```
+
+---
+
+# 🚀 Future Improvements
+
+* Pagination & sorting
+* User authentication
+* Custom alias for URLs
+* Analytics dashboard
+* Deployment (Azure / IIS / Docker)
+
+---
+
+# 👨‍💻 Author
+
+* Arun Ravi
+
+---
+
