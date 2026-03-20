@@ -1,0 +1,30 @@
+<mat-card>
+  <h2>Shorten URL</h2>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Enter URL to shorten</mat-label>
+    <input matInput [(ngModel)]="longUrl">
+  </mat-form-field>
+
+  <mat-checkbox [(ngModel)]="isPrivate">
+    Private
+  </mat-checkbox>
+
+  <button mat-raised-button color="primary" (click)="createUrl()">
+    Generate
+  </button>
+
+  <div *ngIf="generatedShortUrl" style="margin-top: 16px;">
+  <p>
+    <strong>Short URL:</strong>
+    <a [href]="generatedShortUrl" target="_blank">
+      {{ generatedShortUrl }}
+    </a>
+
+    <button mat-button (click)="copyToClipboard()">{{ copyText }}</button>
+  </p>
+</div>
+<div *ngIf="errorMessage" style="color: red; margin-top: 8px;">
+  {{ errorMessage }}
+</div>
+</mat-card>

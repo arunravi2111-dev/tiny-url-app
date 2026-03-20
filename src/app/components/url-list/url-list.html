@@ -1,0 +1,41 @@
+<div class="search-container">
+  <mat-form-field appearance="outline" class="search-box">
+    <mat-label>Search</mat-label>
+    <input
+      matInput
+      [(ngModel)]="searchTerm"
+      (ngModelChange)="search()"
+    />
+  </mat-form-field>
+</div>
+<mat-card *ngFor="let url of filteredUrls" style="margin-bottom: 15px; padding: 15px;">
+
+  <!-- Short URL + Copy -->
+  <div style="display: flex; justify-content: space-between; align-items: center;">
+    <a [href]="getShortUrl(url.shortCode)" target="_blank">
+      {{ getShortUrl(url.shortCode) }}
+    </a>
+
+    <button mat-button (click)="copy(url.shortCode)">
+      {{ copiedMap[url.shortCode] ? 'Copied!' : 'Copy' }}
+    </button>
+  </div>
+
+  <!-- Clicks -->
+  <div style="margin-top: 8px;">
+    {{ url.clicks }} clicks
+  </div>
+
+  <!-- Original URL -->
+  <div style="color: gray; word-break: break-all;">
+    {{ url.originalUrl }}
+  </div>
+
+  <!-- Delete -->
+  <div style="margin-top: 10px;">
+    <button mat-raised-button color="warn" (click)="delete(url.id)">
+      Delete
+    </button>
+  </div>
+
+</mat-card>
